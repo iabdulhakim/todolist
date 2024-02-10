@@ -1,15 +1,13 @@
 import React, { useRef } from "react";
 import TodoList from "./TodoList";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addTodo } from "../redux/todoSlice";
 
 function Todo() {
   const dispitch = useDispatch();
   const inp = useRef();
-  const isIt = useSelector((ombor) => ombor.isTodo);
-  const input = useSelector((ombor) => ombor.input);
 
-  const handleSubmit = (e) => {
+  const handleEnter = (e) => {
     e.preventDefault();
 
     const newTodo = {
@@ -28,7 +26,7 @@ function Todo() {
         <h2 className="md:text-5xl text-3xl font-bold text-center mt-5">Todo List</h2>
       </div>
       <div className=" mt-[25px] flex flex-col md:flex-row ">
-        <form onSubmit={handleSubmit} className=" max-w-full">
+        <form onSubmit={handleEnter} className=" max-w-full">
           <input
             ref={inp}
             type="text"
